@@ -1,0 +1,64 @@
+---
+import { useTranslations, localizedPath, type Lang } from '../lib/i18n';
+import LanguageSwitcher from './LanguageSwitcher.astro';
+
+interface Props {
+  lang: Lang;
+  path: string;
+}
+
+const { lang, path } = Astro.props;
+const t = useTranslations(lang);
+
+const links = [
+  { href: '/', label: t('nav.home') },
+  { href: '/agenda', label: t('nav.agenda') },
+  { href: '/vermar', label: t('nav.vermar') },
+  { href: '/llocs', label: t('nav.places') },
+  { href: '/passats', label: t('nav.past') },
+];
+---
+
+<header class="border-b border-stone/15 bg-cream/95 backdrop-blur">
+  <div class="mx-auto flex max-w-5xl flex-wrap items-center justify-between gap-3 px-4 py-3">
+    <a href={localizedPath('/', lang)} class="flex items-center gap-2 font-serif text-xl font-bold text-grape">
+      <span aria-hidden="true">🍇</span>
+      {t('site.title')}
+    </a>
+
+    <button
+      type="button"
+      id="nav-toggle"
+      class="rounded-md border border-stone/30 px-3 py-2 text-sm font-semibold sm:hidden"
+      aria-expanded="false"
+      aria-controls="main-nav"
+    >
+      Menú
+    </button>
+
+    <nav id="main-nav" class="hidden w-full flex-wrap gap-x-5 gap-y-2 text-base font-semibold sm:flex sm:w-auto">
+      {
+        links.map((link) => (
+          <a
+            href={localizedPath(link.href, lang)}
+            class="rounded px-1 py-0.5 text-ink hover:text-grape hover:underline"
+          >
+            {link.label}
+          </a>
+        ))
+      }
+    </nav>
+
+    <LanguageSwitcher lang={lang} path={path} />
+  </div>
+</header>
+
+<script>
+  const toggle = document.getElementById('nav-toggle');
+  const nav = document.getElementById('main-nav');
+  toggle?.addEventListener('click', () => {
+    const isOpen = nav?.classList.toggle('flex');
+    nav?.classList.toggle('hidden');
+    toggle.setAttribute('aria-expanded', String(Boolean(isOpen)));
+  });
+</script>

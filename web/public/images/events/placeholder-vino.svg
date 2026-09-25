@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 260" role="img" aria-labelledby="t">
+  <title id="t">Vi i gastronomia</title>
+  <rect width="400" height="260" fill="#7a2048" />
+  <g transform="translate(150,60)" fill="#f7f1e3" opacity="0.9"><path d="M20 0h60l-8 55a22 22 0 0 1-44 0z"/><rect x="46" y="75" width="8" height="30"/><rect x="25" y="105" width="50" height="8"/></g>
+  <text x="20" y="235" font-family="Georgia, serif" font-size="22" fill="#f7f1e3">Vi i gastronomia</text>
+</svg>

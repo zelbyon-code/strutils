@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 260" role="img" aria-labelledby="t">
+  <title id="t">Infantil</title>
+  <rect width="400" height="260" fill="#e0a72c" />
+  <g transform="translate(150,60)" fill="#3a2d10" opacity="0.9"><circle cx="50" cy="15" r="16"/><rect x="20" y="35" width="60" height="55" rx="14"/></g>
+  <text x="20" y="235" font-family="Georgia, serif" font-size="22" fill="#3a2d10">Infantil</text>
+</svg>

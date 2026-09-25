@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://binissalem-agenda.example/sitemap-index.xml

@@ -1,0 +1,64 @@
+---
+import { getMonthMatrix } from '../lib/calendar';
+import type { EventItem } from '../lib/events';
+import { localizedPath, type Lang } from '../lib/i18n';
+
+interface Props {
+  year: number;
+  month: number; // 0-indexed
+  events: EventItem[];
+  lang: Lang;
+}
+
+const { year, month, events, lang } = Astro.props;
+const weeks = getMonthMatrix(year, month);
+
+const rawMonthLabel = new Intl.DateTimeFormat(lang === 'ca' ? 'ca-ES' : 'es-ES', {
+  month: 'long',
+  year: 'numeric',
+}).format(new Date(year, month, 1));
+const monthLabel = rawMonthLabel.charAt(0).toUpperCase() + rawMonthLabel.slice(1);
+
+const weekdayLabels =
+  lang === 'ca' ? ['Dl', 'Dt', 'Dc', 'Dj', 'Dv', 'Ds', 'Dg'] : ['Lu', 'Ma', 'Mi', 'Ju', 'Vi', 'Sa', 'Do'];
+
+function eventsOnDay(date: Date): EventItem[] {
+  return events.filter((e) => new Date(e.start).toDateString() === date.toDateString());
+}
+---
+
+<div class="rounded-2xl border border-stone/15 bg-white p-4 shadow-sm">
+  <h3 class="mb-3 text-center font-serif text-xl font-bold">{monthLabel}</h3>
+  <div class="grid grid-cols-7 gap-1 text-center text-xs font-bold uppercase text-stone">
+    {weekdayLabels.map((w) => <div class="py-1">{w}</div>)}
+  </div>
+  <div class="grid grid-cols-7 gap-1">
+    {
+      weeks.map((week) =>
+        week.map((cell) => {
+          if (!cell.date) return <div class="aspect-square" />;
+          const dayEvents = eventsOnDay(cell.date);
+          return (
+            <div
+              class:list={[
+                'flex aspect-square flex-col items-center justify-start rounded-lg border p-1 text-xs',
+                cell.isToday ? 'border-grape bg-grape-light font-bold' : 'border-transparent',
+              ]}
+            >
+              <span>{cell.date.getDate()}</span>
+              {dayEvents.length > 0 && (
+                <a
+                  href={localizedPath(`/esdeveniment/${dayEvents[0].slug}`, lang)}
+                  class="mt-1 flex flex-wrap justify-center gap-0.5"
+                  title={dayEvents.map((e) => e.title[lang]).join(', ')}
+                >
+                  {dayEvents.slice(0, 3).map(() => <span class="h-1.5 w-1.5 rounded-full bg-grape" />)}
+                </a>
+              )}
+            </div>
+          );
+        }),
+      )
+    }
+  </div>
+</div>

@@ -1,0 +1,30 @@
+---
+import { categoryLabel, getCategory } from '../lib/events';
+import type { Lang } from '../lib/i18n';
+
+interface Props {
+  categoryId: string;
+  lang: Lang;
+}
+
+const { categoryId, lang } = Astro.props;
+const label = categoryLabel(categoryId, lang);
+
+// Literal class names so Tailwind's build-time scanner can find them
+// (classes built purely from data at runtime would be purged).
+const badgeClasses: Record<string, string> = {
+  grape: 'bg-grape-light text-grape',
+  ochre: 'bg-ochre-light text-ochre',
+  leaf: 'bg-leaf-light text-leaf',
+  sky: 'bg-sky-light text-sky',
+  sun: 'bg-sun-light text-sun',
+  wine: 'bg-wine-light text-wine',
+  earth: 'bg-earth-light text-earth',
+  stone: 'bg-stone-light text-stone',
+};
+
+const color = getCategory(categoryId)?.color ?? 'stone';
+const classes = badgeClasses[color] ?? badgeClasses.stone;
+---
+
+<span class:list={['category-badge', classes]}>{label}</span>

@@ -1,0 +1,57 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Atkinson Hyperlegible", system-ui, sans-serif;
+  --font-serif: "Fraunces", Georgia, serif;
+
+  --color-leaf: #3f6b30;
+  --color-leaf-light: #eaf2e6;
+  --color-grape: #5f3a8f;
+  --color-grape-light: #f0eaf8;
+  --color-ochre: #b5721f;
+  --color-ochre-light: #faf0e0;
+  --color-wine: #7a2048;
+  --color-wine-light: #f7e9ef;
+  --color-sky: #2f6f8f;
+  --color-sky-light: #e7f1f5;
+  --color-sun: #c98a12;
+  --color-sun-light: #fbf1dc;
+  --color-earth: #8a5a34;
+  --color-earth-light: #f3ebe2;
+  --color-stone: #5c564a;
+  --color-stone-light: #eeece6;
+
+  --color-cream: #fbf7ee;
+  --color-cream-dark: #f1e9d6;
+  --color-ink: #2c2417;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--color-cream);
+  color: var(--color-ink);
+  font-size: 1.125rem;
+  line-height: 1.6;
+}
+
+/* Focus visibility for keyboard navigation (accessibility) */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible {
+  outline: 3px solid var(--color-grape);
+  outline-offset: 2px;
+}
+
+.category-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  border-radius: 999px;
+  padding: 0.2rem 0.75rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+}

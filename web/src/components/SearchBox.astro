@@ -1,0 +1,74 @@
+---
+import { useTranslations, type Lang } from '../lib/i18n';
+
+interface Props {
+  lang: Lang;
+  /** CSS selector of the container whose [data-event-card] children should be filtered */
+  targetSelector: string;
+}
+
+const { lang, targetSelector } = Astro.props;
+const t = useTranslations(lang);
+---
+
+<div class="mb-6">
+  <label for="event-search" class="sr-only">{t('search.placeholder')}</label>
+  <input
+    id="event-search"
+    type="search"
+    placeholder={t('search.placeholder')}
+    class="w-full rounded-full border border-stone/30 bg-white px-5 py-3 text-lg shadow-sm focus:border-grape"
+    data-search-input
+    data-target={targetSelector}
+    data-no-results-text={t('search.noResults')}
+  />
+  <p
+    class="mt-2 hidden text-sm text-stone"
+    data-search-status
+    data-results-count-text={t('search.resultsCount')}
+    role="status"
+    aria-live="polite"
+  ></p>
+</div>
+
+<script>
+  function normalize(text: string): string {
+    return text
+      .normalize('NFD')
+      .replace(/[̀-ͯ]/g, '')
+      .toLowerCase();
+  }
+
+  document.querySelectorAll<HTMLInputElement>('[data-search-input]').forEach((input) => {
+    const targetSelector = input.dataset.target;
+    if (!targetSelector) return;
+    const container = document.querySelector(targetSelector);
+    if (!container) return;
+    const status = input.parentElement?.querySelector<HTMLElement>('[data-search-status]');
+
+    input.addEventListener('input', () => {
+      const query = normalize(input.value.trim());
+      const cards = container.querySelectorAll<HTMLElement>('[data-event-card]');
+      let visibleCount = 0;
+
+      cards.forEach((card) => {
+        const text = card.dataset.searchText ?? '';
+        const matches = query === '' || text.includes(query);
+        card.style.display = matches ? '' : 'none';
+        if (matches) visibleCount += 1;
+      });
+
+      if (!status) return;
+      if (query === '') {
+        status.classList.add('hidden');
+        status.textContent = '';
+      } else {
+        status.classList.remove('hidden');
+        status.textContent =
+          visibleCount === 0
+            ? input.dataset.noResultsText ?? ''
+            : `${visibleCount} ${status.dataset.resultsCountText ?? ''}`;
+      }
+    });
+  });
+</script>

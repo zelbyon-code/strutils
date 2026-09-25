@@ -1,0 +1,68 @@
+---
+import type { EventItem } from '../lib/events';
+import { formatDateRange } from '../lib/dates';
+import { useTranslations, localizedPath, type Lang } from '../lib/i18n';
+import CategoryBadge from './CategoryBadge.astro';
+
+interface Props {
+  event: EventItem;
+  lang: Lang;
+}
+
+const { event, lang } = Astro.props;
+const t = useTranslations(lang);
+const href = localizedPath(`/esdeveniment/${event.slug}`, lang);
+const searchText = [
+  event.title[lang],
+  event.description[lang],
+  event.location.name[lang],
+]
+  .join(' ')
+  .normalize('NFD')
+  .replace(/[̀-ͯ]/g, '')
+  .toLowerCase();
+---
+
+<article
+  class="group flex flex-col overflow-hidden rounded-2xl border border-stone/15 bg-white shadow-sm transition-shadow hover:shadow-md"
+  data-event-card
+  data-category={event.category}
+  data-search-text={searchText}
+>
+  <a href={href} class="block">
+    {
+      event.image && (
+        <img
+          src={event.image}
+          alt={event.imageAlt?.[lang] ?? ''}
+          class="h-40 w-full object-cover"
+          loading="lazy"
+        />
+      )
+    }
+  </a>
+  <div class="flex flex-1 flex-col gap-2 p-4">
+    <div class="flex flex-wrap items-center gap-2">
+      <CategoryBadge categoryId={event.category} lang={lang} />
+      {event.isExample && <span class="text-xs font-semibold uppercase text-wine">{t('event.example')}</span>}
+    </div>
+    <h3 class="font-serif text-lg font-bold leading-snug">
+      <a href={href} class="hover:text-grape">
+        {event.title[lang]}
+      </a>
+    </h3>
+    <p class="text-sm font-semibold text-stone">
+      <time datetime={event.start}>{formatDateRange(event.start, event.end, lang)}</time>
+    </p>
+    <p class="text-sm text-stone">{event.location.name[lang]}</p>
+    <p class="mt-auto pt-2 text-sm font-semibold">
+      {event.price.type === 'free' ? (
+        <span class="text-leaf">{t('event.free')}</span>
+      ) : (
+        <span class="text-ochre">
+          {t('event.paid')} {event.price.amount ? `· ${event.price.amount} €` : ''}
+        </span>
+      )}
+    </p>
+  </div>
+</article>

@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 260" role="img" aria-labelledby="t">
+  <title id="t">Mercat</title>
+  <rect width="400" height="260" fill="#8a5a34" />
+  <g transform="translate(150,60)" fill="#f7f1e3" opacity="0.9"><path d="M0 20h100l-10 20h-80z"/><rect x="10" y="40" width="80" height="60"/><rect x="30" y="60" width="15" height="40"/><rect x="55" y="60" width="15" height="40"/></g>
+  <text x="20" y="235" font-family="Georgia, serif" font-size="22" fill="#f7f1e3">Mercat</text>
+</svg>

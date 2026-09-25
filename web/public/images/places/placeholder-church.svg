@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 260" role="img" aria-labelledby="t">
+  <title id="t">Església</title>
+  <rect width="400" height="260" fill="#6b6459" />
+  <g transform="translate(150,60)" fill="#f7f1e3" opacity="0.9"><rect x="20" y="40" width="60" height="50"/><path d="M50 0l25 30h-50z"/><rect x="45" y="-15" width="4" height="20"/><rect x="35" y="-8" width="24" height="4"/></g>
+  <text x="20" y="235" font-family="Georgia, serif" font-size="22" fill="#f7f1e3">Església</text>
+</svg>

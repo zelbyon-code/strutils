@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 260" role="img" aria-labelledby="t">
+  <title id="t">Festa</title>
+  <rect width="400" height="260" fill="#6b3fa0" />
+  <g transform="translate(150,60)" fill="#f7f1e3" opacity="0.9"><path d="M40 90c-20 0-30-15-30-30 0-20 15-25 15-45 15 10 25 25 25 40 10-5 15-15 15-25 15 15 20 30 20 40 0 20-15 20-45 20z"/></g>
+  <text x="20" y="235" font-family="Georgia, serif" font-size="22" fill="#f7f1e3">Festa</text>
+</svg>

@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 260" role="img" aria-labelledby="t">
+  <title id="t">Cultura</title>
+  <rect width="400" height="260" fill="#c8862c" />
+  <g transform="translate(150,60)" fill="#3a2d10" opacity="0.9"><path d="M0 0h45v90a20 20 0 0 0-45 0z"/><path d="M100 0h-45v90a20 20 0 0 1 45 0z"/></g>
+  <text x="20" y="235" font-family="Georgia, serif" font-size="22" fill="#3a2d10">Cultura</text>
+</svg>

@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 260" role="img" aria-labelledby="t">
+  <title id="t">Esport</title>
+  <rect width="400" height="260" fill="#2f6f8f" />
+  <g transform="translate(150,60)" fill="#f7f1e3" opacity="0.9"><circle cx="65" cy="10" r="12"/><path d="M20 90 L45 60 L35 40 L55 20 L75 45 L95 40 L85 60 L60 65 L45 90z"/></g>
+  <text x="20" y="235" font-family="Georgia, serif" font-size="22" fill="#f7f1e3">Esport</text>
+</svg>

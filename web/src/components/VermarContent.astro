@@ -1,0 +1,55 @@
+---
+import { getVermarEvents } from '../lib/events';
+import { formatDate, formatTime } from '../lib/dates';
+import { icsDataHref } from '../lib/ics';
+import { useTranslations, localizedPath, type Lang } from '../lib/i18n';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+const days = getVermarEvents();
+const siteUrl = Astro.site?.toString() ?? '';
+---
+
+<div class="mx-auto max-w-3xl px-4 py-10">
+  <div class="mb-8 text-center">
+    <span class="text-5xl" aria-hidden="true">🍇</span>
+    <h1 class="mt-2 font-serif text-3xl font-bold sm:text-4xl">{t('vermar.title')}</h1>
+    <p class="mx-auto mt-2 max-w-xl text-stone">{t('vermar.intro')}</p>
+  </div>
+
+  {
+    days.length === 0 ? (
+      <p class="rounded-xl bg-white p-6 text-center text-stone shadow-sm">{t('agenda.noResults')}</p>
+    ) : (
+      <ol class="flex flex-col gap-4">
+        {days.map((event) => (
+          <li class="rounded-2xl border-l-4 border-grape bg-white p-5 shadow-sm">
+            <p class="text-sm font-bold uppercase tracking-wide text-grape">
+              {event.vermar?.dayLabel[lang]} · {formatDate(event.start, lang)}
+            </p>
+            <h2 class="mt-1 font-serif text-xl font-bold">
+              <a href={localizedPath(`/esdeveniment/${event.slug}`, lang)} class="hover:text-grape">
+                {event.title[lang]}
+              </a>
+            </h2>
+            <p class="mt-1 text-sm font-semibold text-stone">
+              {formatTime(event.start, lang)}–{formatTime(event.end, lang)} · {event.location.name[lang]}
+            </p>
+            <p class="mt-2">{event.description[lang]}</p>
+            <a
+              href={icsDataHref(event, lang, siteUrl)}
+              download={`${event.slug}.ics`}
+              class="mt-3 inline-block text-sm font-semibold text-grape underline"
+            >
+              📅 {t('event.addToCalendar')}
+            </a>
+          </li>
+        ))}
+      </ol>
+    )
+  }
+</div>

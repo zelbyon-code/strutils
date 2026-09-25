@@ -1,0 +1,64 @@
+---
+import { categories } from '../lib/events';
+import { useTranslations, type Lang } from '../lib/i18n';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+---
+
+<div class="mb-6 flex flex-wrap gap-2" data-category-filter role="group" aria-label={t('agenda.filterAll')}>
+  <button
+    type="button"
+    class="rounded-full border border-grape bg-grape px-4 py-1.5 text-sm font-semibold text-white"
+    data-filter-btn
+    data-category="all"
+    aria-pressed="true"
+  >
+    {t('agenda.filterAll')}
+  </button>
+  {
+    categories.map((cat) => (
+      <button
+        type="button"
+        class="rounded-full border border-stone/30 bg-white px-4 py-1.5 text-sm font-semibold text-ink hover:border-grape"
+        data-filter-btn
+        data-category={cat.id}
+        aria-pressed="false"
+      >
+        {cat[lang]}
+      </button>
+    ))
+  }
+</div>
+
+<script>
+  const group = document.querySelector<HTMLElement>('[data-category-filter]');
+  if (group) {
+    const buttons = Array.from(group.querySelectorAll<HTMLButtonElement>('[data-filter-btn]'));
+    const cards = () => document.querySelectorAll<HTMLElement>('[data-event-card]');
+
+    function applyFilter(category: string) {
+      cards().forEach((card) => {
+        const match = category === 'all' || card.dataset.category === category;
+        card.style.display = match ? '' : 'none';
+      });
+      buttons.forEach((btn) => {
+        const active = btn.dataset.category === category;
+        btn.setAttribute('aria-pressed', String(active));
+        btn.classList.toggle('bg-grape', active);
+        btn.classList.toggle('text-white', active);
+        btn.classList.toggle('border-grape', active);
+        btn.classList.toggle('bg-white', !active);
+        btn.classList.toggle('text-ink', !active);
+      });
+    }
+
+    buttons.forEach((btn) => {
+      btn.addEventListener('click', () => applyFilter(btn.dataset.category ?? 'all'));
+    });
+  }
+</script>

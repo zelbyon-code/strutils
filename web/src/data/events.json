@@ -1,0 +1,269 @@
+[
+  {
+    "id": "concert-classica-2026",
+    "slug": "concert-musica-classica-EXEMPLE",
+    "category": "musica",
+    "start": "2026-09-27T20:00:00",
+    "end": "2026-09-27T21:30:00",
+    "title": {
+      "ca": "[EXEMPLE] Concert de música clàssica a l'església",
+      "es": "[EJEMPLO] Concierto de música clásica en la iglesia"
+    },
+    "description": {
+      "ca": "Concert obert al públic a càrrec d'una formació de cambra local. Aquest esdeveniment és un EXEMPLE per mostrar com es veu la fitxa; substitueix-lo per un concert real editant data/events.json.",
+      "es": "Concierto abierto al público a cargo de una formación de cámara local. Este evento es un EJEMPLO para mostrar cómo se ve la ficha; sustitúyelo por un concierto real editando data/events.json."
+    },
+    "location": {
+      "name": { "ca": "Església Parroquial [EXEMPLE]", "es": "Iglesia Parroquial [EJEMPLO]" },
+      "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Esgl%C3%A9sia+Parroquial+Binissalem"
+    },
+    "organizer": "Associació Cultural de Binissalem [EXEMPLE]",
+    "price": { "type": "free" },
+    "image": "/images/events/placeholder-musica.svg",
+    "imageAlt": { "ca": "Il·lustració d'instruments de música clàssica", "es": "Ilustración de instrumentos de música clásica" },
+    "isExample": true
+  },
+  {
+    "id": "taller-infantil-2026",
+    "slug": "tallers-infantils-placa-EXEMPLE",
+    "category": "infantil",
+    "start": "2026-09-28T17:30:00",
+    "end": "2026-09-28T19:00:00",
+    "title": {
+      "ca": "[EXEMPLE] Tallers infantils a la plaça",
+      "es": "[EJEMPLO] Talleres infantiles en la plaza"
+    },
+    "description": {
+      "ca": "Tallers de manualitats i jocs per a nins i nines a partir de 4 anys. Esdeveniment d'EXEMPLE: edita'l amb les dades reals abans de publicar.",
+      "es": "Talleres de manualidades y juegos para niños y niñas a partir de 4 años. Evento de EJEMPLO: edítalo con los datos reales antes de publicar."
+    },
+    "location": {
+      "name": { "ca": "Plaça de la Vila [EXEMPLE]", "es": "Plaza de la Villa [EJEMPLO]" },
+      "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Pla%C3%A7a+de+la+Vila+Binissalem"
+    },
+    "organizer": "Ajuntament de Binissalem [EXEMPLE]",
+    "price": { "type": "free" },
+    "image": "/images/events/placeholder-infantil.svg",
+    "imageAlt": { "ca": "Il·lustració de jocs infantils", "es": "Ilustración de juegos infantiles" },
+    "isExample": true
+  },
+  {
+    "id": "tast-vins-2026",
+    "slug": "tast-de-vins-celler-EXEMPLE",
+    "category": "gastronomia-vino",
+    "start": "2026-10-03T19:00:00",
+    "end": "2026-10-03T21:00:00",
+    "title": {
+      "ca": "[EXEMPLE] Tast de vins d'un celler local",
+      "es": "[EJEMPLO] Cata de vinos de una bodega local"
+    },
+    "description": {
+      "ca": "Tast guiat de vins amb Denominació d'Origen Binissalem, a càrrec d'un celler de la vila. Places limitades. Esdeveniment d'EXEMPLE.",
+      "es": "Cata guiada de vinos con Denominación de Origen Binissalem, a cargo de una bodega de la villa. Plazas limitadas. Evento de EJEMPLO."
+    },
+    "location": {
+      "name": { "ca": "Celler [nom del celler] [EXEMPLE]", "es": "Bodega [nombre de la bodega] [EJEMPLO]" },
+      "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Celler+Binissalem"
+    },
+    "organizer": "Celler [nom del celler] [EXEMPLE]",
+    "price": { "type": "paid", "amount": 12, "note": { "ca": "Inclou 4 vins i tapa", "es": "Incluye 4 vinos y tapa" } },
+    "image": "/images/events/placeholder-vino.svg",
+    "imageAlt": { "ca": "Il·lustració de copes de vi", "es": "Ilustración de copas de vino" },
+    "isExample": true
+  },
+  {
+    "id": "mercat-artesanal-2026",
+    "slug": "mercat-artesanal-mensual-EXEMPLE",
+    "category": "mercados",
+    "start": "2026-10-18T09:00:00",
+    "end": "2026-10-18T14:00:00",
+    "title": {
+      "ca": "[EXEMPLE] Mercat artesanal mensual",
+      "es": "[EJEMPLO] Mercado artesanal mensual"
+    },
+    "description": {
+      "ca": "Mercat d'artesania, productes locals i segona mà al centre del poble. Esdeveniment d'EXEMPLE.",
+      "es": "Mercado de artesanía, productos locales y segunda mano en el centro del pueblo. Evento de EJEMPLO."
+    },
+    "location": {
+      "name": { "ca": "Plaça de la Vila [EXEMPLE]", "es": "Plaza de la Villa [EJEMPLO]" },
+      "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Pla%C3%A7a+de+la+Vila+Binissalem"
+    },
+    "organizer": "Ajuntament de Binissalem [EXEMPLE]",
+    "price": { "type": "free" },
+    "image": "/images/events/placeholder-mercado.svg",
+    "imageAlt": { "ca": "Il·lustració d'un mercat a l'aire lliure", "es": "Ilustración de un mercado al aire libre" },
+    "isExample": true
+  },
+  {
+    "id": "exposicio-pintura-2026",
+    "slug": "exposicio-pintura-local-EXEMPLE",
+    "category": "cultura",
+    "start": "2026-10-10T18:00:00",
+    "end": "2026-10-25T21:00:00",
+    "title": {
+      "ca": "[EXEMPLE] Exposició de pintura local",
+      "es": "[EJEMPLO] Exposición de pintura local"
+    },
+    "description": {
+      "ca": "Mostra col·lectiva d'artistes locals. Oberta en horari de tarda durant dues setmanes. Esdeveniment d'EXEMPLE.",
+      "es": "Muestra colectiva de artistas locales. Abierta en horario de tarde durante dos semanas. Evento de EJEMPLO."
+    },
+    "location": {
+      "name": { "ca": "Teatre Municipal [EXEMPLE]", "es": "Teatro Municipal [EJEMPLO]" },
+      "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Teatre+Municipal+Binissalem"
+    },
+    "organizer": "Regidoria de Cultura [EXEMPLE]",
+    "price": { "type": "free" },
+    "image": "/images/events/placeholder-cultura.svg",
+    "imageAlt": { "ca": "Il·lustració de quadres en una exposició", "es": "Ilustración de cuadros en una exposición" },
+    "isExample": true
+  },
+  {
+    "id": "xerrada-patrimoni-2026",
+    "slug": "xerrada-patrimoni-local-EXEMPLE",
+    "category": "otros",
+    "start": "2026-10-22T19:30:00",
+    "end": "2026-10-22T21:00:00",
+    "title": {
+      "ca": "[EXEMPLE] Xerrada sobre el patrimoni local",
+      "es": "[EJEMPLO] Charla sobre el patrimonio local"
+    },
+    "description": {
+      "ca": "Xerrada divulgativa sobre la història i el patrimoni arquitectònic del poble. Esdeveniment d'EXEMPLE.",
+      "es": "Charla divulgativa sobre la historia y el patrimonio arquitectónico del pueblo. Evento de EJEMPLO."
+    },
+    "location": {
+      "name": { "ca": "Teatre Municipal [EXEMPLE]", "es": "Teatro Municipal [EJEMPLO]" },
+      "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Teatre+Municipal+Binissalem"
+    },
+    "organizer": "Associació de Veïns [EXEMPLE]",
+    "price": { "type": "free" },
+    "image": "/images/events/placeholder-otros.svg",
+    "imageAlt": { "ca": "Il·lustració d'un llibre obert", "es": "Ilustración de un libro abierto" },
+    "isExample": true
+  },
+  {
+    "id": "cursa-popular-2026",
+    "slug": "cursa-popular-binissalem-EXEMPLE",
+    "category": "deportes",
+    "start": "2026-11-08T09:30:00",
+    "end": "2026-11-08T12:00:00",
+    "title": {
+      "ca": "[EXEMPLE] Cursa popular de Binissalem",
+      "es": "[EJEMPLO] Carrera popular de Binissalem"
+    },
+    "description": {
+      "ca": "Cursa popular oberta a totes les edats amb sortida i arribada al poliesportiu. Esdeveniment d'EXEMPLE.",
+      "es": "Carrera popular abierta a todas las edades con salida y llegada en el polideportivo. Evento de EJEMPLO."
+    },
+    "location": {
+      "name": { "ca": "Poliesportiu Municipal [EXEMPLE]", "es": "Polideportivo Municipal [EJEMPLO]" },
+      "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Poliesportiu+Municipal+Binissalem"
+    },
+    "organizer": "Club Esportiu Binissalem [EXEMPLE]",
+    "price": { "type": "paid", "amount": 5, "note": { "ca": "Inscripció anticipada", "es": "Inscripción anticipada" } },
+    "image": "/images/events/placeholder-deporte.svg",
+    "imageAlt": { "ca": "Il·lustració de persones corrent", "es": "Ilustración de personas corriendo" },
+    "isExample": true
+  },
+  {
+    "id": "sant-jaume-2026",
+    "slug": "sant-jaume-completes-correfoc-EXEMPLE",
+    "category": "fiestas-populares",
+    "start": "2026-07-25T22:00:00",
+    "end": "2026-07-26T00:30:00",
+    "title": {
+      "ca": "[EXEMPLE] Sant Jaume: completes i correfoc",
+      "es": "[EJEMPLO] Sant Jaume: completas y correfuego"
+    },
+    "description": {
+      "ca": "Actes de la revetla de Sant Jaume amb música i correfoc pels carrers del poble. Esdeveniment d'EXEMPLE ja passat: es mostra a l'arxiu d'esdeveniments passats.",
+      "es": "Actos de la revetlla de Sant Jaume con música y correfuego por las calles del pueblo. Evento de EJEMPLO ya pasado: se muestra en el archivo de eventos pasados."
+    },
+    "location": {
+      "name": { "ca": "Plaça de la Vila [EXEMPLE]", "es": "Plaza de la Villa [EJEMPLO]" },
+      "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Pla%C3%A7a+de+la+Vila+Binissalem"
+    },
+    "organizer": "Ajuntament de Binissalem [EXEMPLE]",
+    "price": { "type": "free" },
+    "image": "/images/events/placeholder-fiesta.svg",
+    "imageAlt": { "ca": "Il·lustració de foc i festa popular", "es": "Ilustración de fuego y fiesta popular" },
+    "isExample": true
+  },
+  {
+    "id": "vermar-2026-dia1",
+    "slug": "festa-des-vermar-dia-1-EXEMPLE",
+    "category": "fiestas-populares",
+    "start": "2026-09-26T19:00:00",
+    "end": "2026-09-26T22:00:00",
+    "title": {
+      "ca": "[EXEMPLE] Festa des Vermar — Dia 1: Pregó i repicada",
+      "es": "[EJEMPLO] Festa des Vermar — Día 1: Pregón y repique de campanas"
+    },
+    "description": {
+      "ca": "Obertura oficial de la Festa des Vermar amb el pregó, repicada de campanes i primeres activitats de carrer. Esdeveniment d'EXEMPLE: substitueix les dates i l'ordre del dia pel programa real.",
+      "es": "Apertura oficial de la Festa des Vermar con el pregón, repique de campanas y primeras actividades de calle. Evento de EJEMPLO: sustituye las fechas y el orden del día por el programa real."
+    },
+    "location": {
+      "name": { "ca": "Plaça de la Vila [EXEMPLE]", "es": "Plaza de la Villa [EJEMPLO]" },
+      "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Pla%C3%A7a+de+la+Vila+Binissalem"
+    },
+    "organizer": "Ajuntament de Binissalem [EXEMPLE]",
+    "price": { "type": "free" },
+    "image": "/images/events/placeholder-vermar.svg",
+    "imageAlt": { "ca": "Il·lustració de raïm i pàmpols de vinya", "es": "Ilustración de uvas y pámpanos de viña" },
+    "vermar": { "day": 1, "dayLabel": { "ca": "Dia 1", "es": "Día 1" } },
+    "isExample": true
+  },
+  {
+    "id": "vermar-2026-dia2",
+    "slug": "festa-des-vermar-dia-2-EXEMPLE",
+    "category": "fiestas-populares",
+    "start": "2026-09-27T11:00:00",
+    "end": "2026-09-27T14:00:00",
+    "title": {
+      "ca": "[EXEMPLE] Festa des Vermar — Dia 2: Trepitjada de raïm",
+      "es": "[EJEMPLO] Festa des Vermar — Día 2: Pisada de uva"
+    },
+    "description": {
+      "ca": "Trepitjada tradicional de raïm a la plaça, amb degustació de most i activitats familiars. Esdeveniment d'EXEMPLE.",
+      "es": "Pisada tradicional de uva en la plaza, con degustación de mosto y actividades familiares. Evento de EJEMPLO."
+    },
+    "location": {
+      "name": { "ca": "Plaça de la Vila [EXEMPLE]", "es": "Plaza de la Villa [EJEMPLO]" },
+      "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Pla%C3%A7a+de+la+Vila+Binissalem"
+    },
+    "organizer": "Ajuntament de Binissalem [EXEMPLE]",
+    "price": { "type": "free" },
+    "image": "/images/events/placeholder-vermar.svg",
+    "imageAlt": { "ca": "Il·lustració de raïm i pàmpols de vinya", "es": "Ilustración de uvas y pámpanos de viña" },
+    "vermar": { "day": 2, "dayLabel": { "ca": "Dia 2", "es": "Día 2" } },
+    "isExample": true
+  },
+  {
+    "id": "vermar-2026-dia3",
+    "slug": "festa-des-vermar-dia-3-EXEMPLE",
+    "category": "fiestas-populares",
+    "start": "2026-09-28T20:00:00",
+    "end": "2026-09-28T23:59:00",
+    "title": {
+      "ca": "[EXEMPLE] Festa des Vermar — Dia 3: Concert final i focs artificials",
+      "es": "[EJEMPLO] Festa des Vermar — Día 3: Concierto final y fuegos artificiales"
+    },
+    "description": {
+      "ca": "Cloenda de la Festa des Vermar amb concert a la plaça i focs artificials. Esdeveniment d'EXEMPLE.",
+      "es": "Clausura de la Festa des Vermar con concierto en la plaza y fuegos artificiales. Evento de EJEMPLO."
+    },
+    "location": {
+      "name": { "ca": "Plaça de la Vila [EXEMPLE]", "es": "Plaza de la Villa [EJEMPLO]" },
+      "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Pla%C3%A7a+de+la+Vila+Binissalem"
+    },
+    "organizer": "Ajuntament de Binissalem [EXEMPLE]",
+    "price": { "type": "free" },
+    "image": "/images/events/placeholder-vermar.svg",
+    "imageAlt": { "ca": "Il·lustració de focs artificials sobre un poble", "es": "Ilustración de fuegos artificiales sobre un pueblo" },
+    "vermar": { "day": 3, "dayLabel": { "ca": "Dia 3", "es": "Día 3" } },
+    "isExample": true
+  }
+]

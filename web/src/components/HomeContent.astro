@@ -1,0 +1,92 @@
+---
+import { getEventsThisWeek, getEventsThisMonth, getVermarEvents } from '../lib/events';
+import { useTranslations, localizedPath, type Lang } from '../lib/i18n';
+import EventCard from './EventCard.astro';
+import SearchBox from './SearchBox.astro';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+
+const now = new Date();
+const thisWeek = getEventsThisWeek(now);
+const thisWeekIds = new Set(thisWeek.map((e) => e.id));
+const thisMonthOnly = getEventsThisMonth(now).filter((e) => !thisWeekIds.has(e.id));
+
+const upcomingVermar = getVermarEvents().filter((e) => new Date(e.end) >= now);
+---
+
+<section class="bg-gradient-to-b from-grape-light to-cream px-4 py-12">
+  <div class="mx-auto max-w-5xl text-center">
+    <h1 class="font-serif text-4xl font-bold text-grape sm:text-5xl">{t('home.hero.title')}</h1>
+    <p class="mx-auto mt-3 max-w-xl text-lg text-stone">{t('home.hero.subtitle')}</p>
+    <div class="mx-auto mt-8 max-w-xl text-left">
+      <SearchBox lang={lang} targetSelector="#upcoming-events" />
+    </div>
+  </div>
+</section>
+
+{
+  upcomingVermar.length > 0 && (
+    <section class="mx-auto max-w-5xl px-4">
+      <div class="flex flex-wrap items-center justify-between gap-3 rounded-2xl bg-grape px-6 py-4 text-white">
+        <p class="font-serif text-lg font-bold">🍇 {t('home.vermar.cta')}</p>
+        <a
+          href={localizedPath('/vermar', lang)}
+          class="rounded-full bg-white px-4 py-2 text-sm font-bold text-grape hover:bg-cream"
+        >
+          {t('home.vermar.ctaBtn')}
+        </a>
+      </div>
+    </section>
+  )
+}
+
+<div id="upcoming-events" class="mx-auto max-w-5xl px-4 py-10">
+  {
+    thisWeek.length === 0 && thisMonthOnly.length === 0 ? (
+      <p class="rounded-xl bg-white p-6 text-center text-stone shadow-sm">
+        {t('home.noEvents')}
+        <a href={localizedPath('/agenda', lang)} class="font-semibold text-grape underline">
+          {t('home.noEvents.link')}
+        </a>
+        .
+      </p>
+    ) : (
+      <>
+        {thisWeek.length > 0 && (
+          <section class="mb-10">
+            <h2 class="mb-4 font-serif text-2xl font-bold">{t('home.upcoming.week')}</h2>
+            <div class="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
+              {thisWeek.map((event) => (
+                <EventCard event={event} lang={lang} />
+              ))}
+            </div>
+          </section>
+        )}
+        {thisMonthOnly.length > 0 && (
+          <section>
+            <h2 class="mb-4 font-serif text-2xl font-bold">{t('home.upcoming.month')}</h2>
+            <div class="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
+              {thisMonthOnly.map((event) => (
+                <EventCard event={event} lang={lang} />
+              ))}
+            </div>
+          </section>
+        )}
+      </>
+    )
+  }
+
+  <div class="mt-10 text-center">
+    <a
+      href={localizedPath('/agenda', lang)}
+      class="inline-block rounded-full bg-ochre px-6 py-3 font-bold text-white shadow-sm hover:bg-ochre/90"
+    >
+      {t('home.viewAgenda')}
+    </a>
+  </div>
+</div>

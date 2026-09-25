@@ -1,0 +1,50 @@
+[
+  {
+    "id": "fiestas-populares",
+    "ca": "Festes populars",
+    "es": "Fiestas populares",
+    "color": "grape"
+  },
+  {
+    "id": "cultura",
+    "ca": "Cultura",
+    "es": "Cultura",
+    "color": "ochre"
+  },
+  {
+    "id": "musica",
+    "ca": "Música",
+    "es": "Música",
+    "color": "leaf"
+  },
+  {
+    "id": "deportes",
+    "ca": "Esport",
+    "es": "Deporte",
+    "color": "sky"
+  },
+  {
+    "id": "infantil",
+    "ca": "Infantil",
+    "es": "Infantil",
+    "color": "sun"
+  },
+  {
+    "id": "gastronomia-vino",
+    "ca": "Gastronomia i vi",
+    "es": "Gastronomía y vino",
+    "color": "wine"
+  },
+  {
+    "id": "mercados",
+    "ca": "Mercats",
+    "es": "Mercados",
+    "color": "earth"
+  },
+  {
+    "id": "otros",
+    "ca": "Altres",
+    "es": "Otros",
+    "color": "stone"
+  }
+]

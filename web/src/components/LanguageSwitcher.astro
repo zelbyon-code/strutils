@@ -1,0 +1,35 @@
+---
+import { localizedPath, type Lang } from '../lib/i18n';
+
+interface Props {
+  lang: Lang;
+  path: string;
+}
+
+const { lang, path } = Astro.props;
+const caHref = localizedPath(path, 'ca');
+const esHref = localizedPath(path, 'es');
+---
+
+<div class="flex items-center gap-1 rounded-full border border-stone/20 bg-white/60 p-1 text-sm font-semibold">
+  <a
+    href={caHref}
+    aria-current={lang === 'ca' ? 'page' : undefined}
+    class:list={[
+      'rounded-full px-3 py-1 transition-colors',
+      lang === 'ca' ? 'bg-grape text-white' : 'text-ink hover:bg-grape-light',
+    ]}
+  >
+    CA
+  </a>
+  <a
+    href={esHref}
+    aria-current={lang === 'es' ? 'page' : undefined}
+    class:list={[
+      'rounded-full px-3 py-1 transition-colors',
+      lang === 'es' ? 'bg-grape text-white' : 'text-ink hover:bg-grape-light',
+    ]}
+  >
+    ES
+  </a>
+</div>

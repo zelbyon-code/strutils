@@ -1,0 +1,46 @@
+[
+  {
+    "id": "placa-vila",
+    "name": { "ca": "Plaça de la Vila [EXEMPLE]", "es": "Plaza de la Villa [EJEMPLO]" },
+    "description": {
+      "ca": "Plaça central del poble, punt de trobada habitual i escenari de bona part dels actes de les festes majors. Comprova el nom exacte i la ubicació abans de publicar.",
+      "es": "Plaza central del pueblo, punto de encuentro habitual y escenario de buena parte de los actos de las fiestas mayores. Comprueba el nombre exacto y la ubicación antes de publicar."
+    },
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Pla%C3%A7a+de+la+Vila+Binissalem",
+    "image": "/images/places/placeholder-plaza.svg",
+    "imageAlt": { "ca": "Il·lustració d'una plaça de poble", "es": "Ilustración de una plaza de pueblo" }
+  },
+  {
+    "id": "esglesia-parroquial",
+    "name": { "ca": "Església Parroquial [EXEMPLE]", "es": "Iglesia Parroquial [EJEMPLO]" },
+    "description": {
+      "ca": "Temple parroquial del municipi, on tenen lloc celebracions religioses i alguns concerts. Comprova la denominació oficial abans de publicar.",
+      "es": "Templo parroquial del municipio, donde tienen lugar celebraciones religiosas y algunos conciertos. Comprueba la denominación oficial antes de publicar."
+    },
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Esgl%C3%A9sia+Parroquial+Binissalem",
+    "image": "/images/places/placeholder-church.svg",
+    "imageAlt": { "ca": "Il·lustració d'una església", "es": "Ilustración de una iglesia" }
+  },
+  {
+    "id": "teatre-municipal",
+    "name": { "ca": "Teatre Municipal [EXEMPLE]", "es": "Teatro Municipal [EJEMPLO]" },
+    "description": {
+      "ca": "Espai municipal per a representacions teatrals, cinema i actes culturals. Comprova el nom i l'adreça exactes abans de publicar.",
+      "es": "Espacio municipal para representaciones teatrales, cine y actos culturales. Comprueba el nombre y la dirección exactos antes de publicar."
+    },
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Teatre+Municipal+Binissalem",
+    "image": "/images/places/placeholder-theatre.svg",
+    "imageAlt": { "ca": "Il·lustració d'un teatre", "es": "Ilustración de un teatro" }
+  },
+  {
+    "id": "poliesportiu",
+    "name": { "ca": "Poliesportiu Municipal [EXEMPLE]", "es": "Polideportivo Municipal [EJEMPLO]" },
+    "description": {
+      "ca": "Instal·lacions esportives municipals on se celebren competicions i activitats esportives obertes al públic. Comprova el nom i l'adreça exactes abans de publicar.",
+      "es": "Instalaciones deportivas municipales donde se celebran competiciones y actividades deportivas abiertas al público. Comprueba el nombre y la dirección exactos antes de publicar."
+    },
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Poliesportiu+Municipal+Binissalem",
+    "image": "/images/places/placeholder-sports.svg",
+    "imageAlt": { "ca": "Il·lustració d'un poliesportiu", "es": "Ilustración de un polideportivo" }
+  }
+]

@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 260" role="img" aria-labelledby="t">
+  <title id="t">Poliesportiu</title>
+  <rect width="400" height="260" fill="#2f6f8f" />
+  <g transform="translate(150,60)" fill="#f7f1e3" opacity="0.9"><circle cx="50" cy="45" r="40" fill="none" stroke="currentColor" stroke-width="8"/><path d="M20 25 h60 M20 65 h60" stroke="currentColor" stroke-width="6" fill="none"/></g>
+  <text x="20" y="235" font-family="Georgia, serif" font-size="22" fill="#f7f1e3">Poliesportiu</text>
+</svg>

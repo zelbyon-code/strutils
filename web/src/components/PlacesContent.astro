@@ -1,0 +1,38 @@
+---
+import places from '../data/places.json';
+import { useTranslations, type Lang } from '../lib/i18n';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+---
+
+<div class="mx-auto max-w-4xl px-4 py-10">
+  <h1 class="mb-2 font-serif text-3xl font-bold sm:text-4xl">{t('places.title')}</h1>
+  <p class="mb-8 text-stone">{t('places.intro')}</p>
+
+  <div class="grid grid-cols-1 gap-6 sm:grid-cols-2">
+    {
+      places.map((place) => (
+        <article class="overflow-hidden rounded-2xl border border-stone/15 bg-white shadow-sm">
+          <img src={place.image} alt={place.imageAlt[lang as 'ca' | 'es']} class="h-40 w-full object-cover" loading="lazy" />
+          <div class="p-5">
+            <h2 class="mb-2 font-serif text-xl font-bold">{place.name[lang as 'ca' | 'es']}</h2>
+            <p class="mb-3 text-stone">{place.description[lang as 'ca' | 'es']}</p>
+            <a
+              href={place.mapsUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="font-semibold text-grape underline"
+            >
+              {t('event.seeOnMap')}
+            </a>
+          </div>
+        </article>
+      ))
+    }
+  </div>
+</div>

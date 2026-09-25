@@ -1,0 +1,43 @@
+---
+import { getPastEvents } from '../lib/events';
+import { formatDateRange } from '../lib/dates';
+import { useTranslations, localizedPath, type Lang } from '../lib/i18n';
+import CategoryBadge from './CategoryBadge.astro';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+const past = getPastEvents();
+---
+
+<div class="mx-auto max-w-3xl px-4 py-10">
+  <h1 class="mb-2 font-serif text-3xl font-bold sm:text-4xl">{t('past.title')}</h1>
+  <p class="mb-8 text-stone">{t('past.intro')}</p>
+
+  {
+    past.length === 0 ? (
+      <p class="rounded-xl bg-white p-6 text-center text-stone shadow-sm">{t('agenda.noResults')}</p>
+    ) : (
+      <ul class="flex flex-col gap-3">
+        {past.map((event) => (
+          <li class="flex flex-wrap items-center justify-between gap-2 rounded-xl border border-stone/15 bg-white p-4">
+            <div>
+              <div class="mb-1">
+                <CategoryBadge categoryId={event.category} lang={lang} />
+              </div>
+              <a href={localizedPath(`/esdeveniment/${event.slug}`, lang)} class="font-semibold hover:text-grape">
+                {event.title[lang]}
+              </a>
+              <p class="text-sm text-stone">
+                <time datetime={event.start}>{formatDateRange(event.start, event.end, lang)}</time>
+              </p>
+            </div>
+          </li>
+        ))}
+      </ul>
+    )
+  }
+</div>

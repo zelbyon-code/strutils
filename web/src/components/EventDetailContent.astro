@@ -1,0 +1,90 @@
+---
+import type { EventItem } from '../lib/events';
+import { formatDateRange } from '../lib/dates';
+import { icsDataHref } from '../lib/ics';
+import { useTranslations, localizedPath, type Lang } from '../lib/i18n';
+import CategoryBadge from './CategoryBadge.astro';
+
+interface Props {
+  event: EventItem;
+  lang: Lang;
+}
+
+const { event, lang } = Astro.props;
+const t = useTranslations(lang);
+const siteUrl = new URL(Astro.url.pathname, Astro.site).toString();
+const icsHref = icsDataHref(event, lang, siteUrl);
+---
+
+<article class="mx-auto max-w-3xl px-4 py-10">
+  <a href={localizedPath('/agenda', lang)} class="mb-6 inline-block text-sm font-semibold text-grape hover:underline">
+    ← {t('event.back')}
+  </a>
+
+  {
+    event.image && (
+      <img
+        src={event.image}
+        alt={event.imageAlt?.[lang] ?? ''}
+        class="mb-6 h-64 w-full rounded-2xl object-cover"
+      />
+    )
+  }
+
+  <div class="mb-3 flex flex-wrap items-center gap-2">
+    <CategoryBadge categoryId={event.category} lang={lang} />
+    {event.isExample && <span class="text-xs font-semibold uppercase text-wine">{t('event.example')}</span>}
+  </div>
+
+  <h1 class="mb-4 font-serif text-3xl font-bold sm:text-4xl">{event.title[lang]}</h1>
+
+  <dl class="mb-6 grid grid-cols-1 gap-4 rounded-2xl border border-stone/15 bg-white p-5 sm:grid-cols-2">
+    <div>
+      <dt class="text-xs font-bold uppercase tracking-wide text-stone">{t('event.location')}</dt>
+      <dd class="mt-1">
+        {event.location.name[lang]}
+        <br />
+        <a href={event.location.mapsUrl} target="_blank" rel="noopener noreferrer" class="font-semibold text-grape underline">
+          {t('event.seeOnMap')}
+        </a>
+      </dd>
+    </div>
+    <div>
+      <dt class="text-xs font-bold uppercase tracking-wide text-stone">{t('event.date')}</dt>
+      <dd class="mt-1">
+        <time datetime={event.start}>{formatDateRange(event.start, event.end, lang)}</time>
+      </dd>
+    </div>
+    {
+      event.organizer && (
+        <div>
+          <dt class="text-xs font-bold uppercase tracking-wide text-stone">{t('event.organizer')}</dt>
+          <dd class="mt-1">{event.organizer}</dd>
+        </div>
+      )
+    }
+    <div>
+      <dt class="text-xs font-bold uppercase tracking-wide text-stone">{t('event.price')}</dt>
+      <dd class="mt-1 font-semibold">
+        {event.price.type === 'free' ? (
+          <span class="text-leaf">{t('event.free')}</span>
+        ) : (
+          <span class="text-ochre">
+            {t('event.paid')} {event.price.amount ? `· ${event.price.amount} €` : ''}
+            {event.price.note && <> — {event.price.note[lang]}</>}
+          </span>
+        )}
+      </dd>
+    </div>
+  </dl>
+
+  <p class="mb-8 whitespace-pre-line text-lg leading-relaxed">{event.description[lang]}</p>
+
+  <a
+    href={icsHref}
+    download={`${event.slug}.ics`}
+    class="inline-flex items-center gap-2 rounded-full bg-grape px-6 py-3 font-bold text-white shadow-sm hover:bg-grape/90"
+  >
+    📅 {t('event.addToCalendar')}
+  </a>
+</article>

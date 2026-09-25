@@ -1,0 +1,50 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import EventDetailContent from '../../../components/EventDetailContent.astro';
+import { events } from '../../../lib/events';
+
+export function getStaticPaths() {
+  return events.map((event) => ({
+    params: { slug: event.slug },
+    props: { event },
+  }));
+}
+
+const { event } = Astro.props;
+const siteUrl = Astro.site ? new URL(`/es/esdeveniment/${event.slug}`, Astro.site).toString() : '';
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Event',
+  name: event.title.es,
+  startDate: event.start,
+  endDate: event.end,
+  eventAttendanceMode: 'https://schema.org/OfflineEventAttendanceMode',
+  eventStatus: 'https://schema.org/EventScheduled',
+  location: {
+    '@type': 'Place',
+    name: event.location.name.es,
+    hasMap: event.location.mapsUrl,
+  },
+  image: event.image ? [new URL(event.image, Astro.site).toString()] : undefined,
+  description: event.description.es,
+  organizer: event.organizer ? { '@type': 'Organization', name: event.organizer } : undefined,
+  offers: {
+    '@type': 'Offer',
+    price: event.price.type === 'free' ? '0' : String(event.price.amount ?? ''),
+    priceCurrency: 'EUR',
+    url: siteUrl,
+  },
+};
+---
+
+<BaseLayout
+  lang="es"
+  path={`/es/esdeveniment/${event.slug}`}
+  title={`${event.title.es} — Agenda de Binissalem`}
+  description={event.description.es.slice(0, 155)}
+  image={event.image}
+>
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify(jsonLd)} />
+  <EventDetailContent event={event} lang="es" />
+</BaseLayout>

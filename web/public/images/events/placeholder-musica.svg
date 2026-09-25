@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 260" role="img" aria-labelledby="t">
+  <title id="t">Música</title>
+  <rect width="400" height="260" fill="#4a7c3a" />
+  <g transform="translate(150,60)" fill="#f7f1e3" opacity="0.9"><circle cx="15" cy="80" r="14"/><circle cx="70" cy="70" r="14"/><rect x="27" y="10" width="6" height="70"/><rect x="82" y="0" width="6" height="70"/><rect x="27" y="10" width="61" height="6"/></g>
+  <text x="20" y="235" font-family="Georgia, serif" font-size="22" fill="#f7f1e3">Música</text>
+</svg>
