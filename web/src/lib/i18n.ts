@@ -106,7 +106,7 @@ export const ui = {
 export type UiKey = keyof (typeof ui)['ca'];
 
 export function getLangFromUrl(url: URL): Lang {
-  return url.pathname.startsWith('/es') ? 'es' : 'ca';
+  return /^\/es(\/|$)/.test(url.pathname) ? 'es' : 'ca';
 }
 
 export function useTranslations(lang: Lang) {
@@ -116,7 +116,7 @@ export function useTranslations(lang: Lang) {
 }
 
 export function localizedPath(path: string, lang: Lang): string {
-  const clean = path.replace(/^\/es/, '') || '/';
+  const clean = path.replace(/^\/es(\/|$)/, '/') || '/';
   if (lang === 'ca') return clean;
   return clean === '/' ? '/es' : `/es${clean}`;
 }
