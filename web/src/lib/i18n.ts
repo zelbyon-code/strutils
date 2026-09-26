@@ -115,8 +115,18 @@ export function useTranslations(lang: Lang) {
   };
 }
 
+/**
+ * Prefixes a root-relative path with Astro's configured base (e.g. "/strutils/"
+ * when built for a GitHub Pages project site, "/" for local dev and other hosts).
+ */
+export function withBase(path: string): string {
+  const base = import.meta.env.BASE_URL || '/';
+  if (path === '/') return base;
+  return base.replace(/\/$/, '') + path;
+}
+
 export function localizedPath(path: string, lang: Lang): string {
   const clean = path.replace(/^\/es(\/|$)/, '/') || '/';
-  if (lang === 'ca') return clean;
-  return clean === '/' ? '/es' : `/es${clean}`;
+  const localized = lang === 'ca' ? clean : clean === '/' ? '/es' : `/es${clean}`;
+  return withBase(localized);
 }

@@ -1,6 +1,6 @@
 ---
 import places from '../data/places.json';
-import { useTranslations, type Lang } from '../lib/i18n';
+import { useTranslations, withBase, type Lang } from '../lib/i18n';
 
 interface Props {
   lang: Lang;
@@ -18,7 +18,7 @@ const t = useTranslations(lang);
     {
       places.map((place) => (
         <article class="overflow-hidden rounded-2xl border border-stone/15 bg-white shadow-sm">
-          <img src={place.image} alt={place.imageAlt[lang as 'ca' | 'es']} class="h-40 w-full object-cover" loading="lazy" />
+          <img src={withBase(place.image)} alt={place.imageAlt[lang as 'ca' | 'es']} class="h-40 w-full object-cover" loading="lazy" />
           <div class="p-5">
             <h2 class="mb-2 font-serif text-xl font-bold">{place.name[lang as 'ca' | 'es']}</h2>
             <p class="mb-3 text-stone">{place.description[lang as 'ca' | 'es']}</p>

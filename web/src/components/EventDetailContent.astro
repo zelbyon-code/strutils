@@ -2,7 +2,7 @@
 import type { EventItem } from '../lib/events';
 import { formatDateRange } from '../lib/dates';
 import { icsDataHref } from '../lib/ics';
-import { useTranslations, localizedPath, type Lang } from '../lib/i18n';
+import { useTranslations, localizedPath, withBase, type Lang } from '../lib/i18n';
 import CategoryBadge from './CategoryBadge.astro';
 
 interface Props {
@@ -24,7 +24,7 @@ const icsHref = icsDataHref(event, lang, siteUrl);
   {
     event.image && (
       <img
-        src={event.image}
+        src={withBase(event.image)}
         alt={event.imageAlt?.[lang] ?? ''}
         class="mb-6 h-64 w-full rounded-2xl object-cover"
       />
