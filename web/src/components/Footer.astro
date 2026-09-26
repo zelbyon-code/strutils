@@ -1,5 +1,6 @@
 ---
 import { useTranslations, localizedPath, type Lang } from '../lib/i18n';
+import GrapeMark from './GrapeMark.astro';
 
 interface Props {
   lang: Lang;
@@ -10,17 +11,28 @@ const t = useTranslations(lang);
 ---
 
 <footer class="border-t border-stone/15 bg-cream-dark">
-  <div class="mx-auto max-w-5xl px-4 py-8 text-sm text-stone">
-    <p>
+  <div class="mx-auto flex max-w-5xl flex-col gap-6 px-4 py-10 sm:flex-row sm:items-start sm:justify-between">
+    <div class="flex items-start gap-3">
+      <GrapeMark class="mt-0.5 h-7 w-7 shrink-0 text-grape/70" />
+      <div class="text-sm text-stone">
+        <p class="font-serif text-base font-bold text-ink">{t('site.title')}</p>
+        <p class="mt-1">{t('footer.rights')}</p>
+      </div>
+    </div>
+
+    <div class="flex flex-col gap-1 text-sm">
+      <a href={localizedPath('/llocs', lang)} class="text-stone underline-offset-2 hover:text-grape hover:underline">
+        {t('nav.places')}
+      </a>
+      <a href={localizedPath('/passats', lang)} class="text-stone underline-offset-2 hover:text-grape hover:underline">
+        {t('nav.past')}
+      </a>
+    </div>
+
+    <p class="max-w-xs text-sm text-stone">
       {t('footer.editData')}
       {' '}
-      <strong>README.md</strong> {t('footer.editDataLink')}.
-    </p>
-    <p class="mt-2">{t('footer.rights')}</p>
-    <p class="mt-1">
-      <a href={localizedPath('/llocs', lang)} class="underline hover:text-grape">{t('nav.places')}</a>
-      ·
-      <a href={localizedPath('/passats', lang)} class="underline hover:text-grape">{t('nav.past')}</a>
+      <strong class="text-ink">README.md</strong> {t('footer.editDataLink')}.
     </p>
   </div>
 </footer>

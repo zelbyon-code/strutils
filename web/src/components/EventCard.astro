@@ -1,4 +1,5 @@
 ---
+import { getCategory } from '../lib/events';
 import type { EventItem } from '../lib/events';
 import { formatDateRange } from '../lib/dates';
 import { useTranslations, localizedPath, withBase, type Lang } from '../lib/i18n';
@@ -21,21 +22,38 @@ const searchText = [
   .normalize('NFD')
   .replace(/[̀-ͯ]/g, '')
   .toLowerCase();
+
+// Literal classes so Tailwind's build-time scanner keeps them (see CategoryBadge.astro).
+const topBorderClasses: Record<string, string> = {
+  grape: 'border-t-grape',
+  ochre: 'border-t-ochre',
+  leaf: 'border-t-leaf',
+  sky: 'border-t-sky',
+  sun: 'border-t-sun',
+  wine: 'border-t-wine',
+  earth: 'border-t-earth',
+  stone: 'border-t-stone',
+};
+const accentColor = getCategory(event.category)?.color ?? 'stone';
+const topBorder = topBorderClasses[accentColor] ?? topBorderClasses.stone;
 ---
 
 <article
-  class="group flex flex-col overflow-hidden rounded-2xl border border-stone/15 bg-white shadow-sm transition-shadow hover:shadow-md"
+  class:list={[
+    'group flex flex-col overflow-hidden rounded-2xl border border-stone/15 border-t-4 bg-white shadow-sm transition-all duration-200 hover:-translate-y-1 hover:shadow-lg',
+    topBorder,
+  ]}
   data-event-card
   data-category={event.category}
   data-search-text={searchText}
 >
-  <a href={href} class="block">
+  <a href={href} class="block overflow-hidden">
     {
       event.image && (
         <img
           src={withBase(event.image)}
           alt={event.imageAlt?.[lang] ?? ''}
-          class="h-40 w-full object-cover"
+          class="h-40 w-full object-cover transition-transform duration-300 group-hover:scale-105"
           loading="lazy"
         />
       )

@@ -3,6 +3,8 @@ import { getEventsThisWeek, getEventsThisMonth, getVermarEvents } from '../lib/e
 import { useTranslations, localizedPath, type Lang } from '../lib/i18n';
 import EventCard from './EventCard.astro';
 import SearchBox from './SearchBox.astro';
+import GrapeMark from './GrapeMark.astro';
+import VineBackdrop from './VineBackdrop.astro';
 
 interface Props {
   lang: Lang;
@@ -19,9 +21,10 @@ const thisMonthOnly = getEventsThisMonth(now).filter((e) => !thisWeekIds.has(e.i
 const upcomingVermar = getVermarEvents().filter((e) => new Date(e.end) >= now);
 ---
 
-<section class="bg-gradient-to-b from-grape-light to-cream px-4 py-12">
-  <div class="mx-auto max-w-5xl text-center">
-    <h1 class="font-serif text-4xl font-bold text-grape sm:text-5xl">{t('home.hero.title')}</h1>
+<section class="relative overflow-hidden bg-gradient-to-b from-grape-light to-cream px-4 py-14">
+  <VineBackdrop class="pointer-events-none absolute inset-0 h-full w-full text-grape opacity-[0.06]" />
+  <div class="relative mx-auto max-w-5xl text-center">
+    <h1 class="text-balance font-serif text-4xl font-bold text-grape sm:text-5xl">{t('home.hero.title')}</h1>
     <p class="mx-auto mt-3 max-w-xl text-lg text-stone">{t('home.hero.subtitle')}</p>
     <div class="mx-auto mt-8 max-w-xl text-left">
       <SearchBox lang={lang} targetSelector="#upcoming-events" />
@@ -32,11 +35,14 @@ const upcomingVermar = getVermarEvents().filter((e) => new Date(e.end) >= now);
 {
   upcomingVermar.length > 0 && (
     <section class="mx-auto max-w-5xl px-4">
-      <div class="flex flex-wrap items-center justify-between gap-3 rounded-2xl bg-grape px-6 py-4 text-white">
-        <p class="font-serif text-lg font-bold">🍇 {t('home.vermar.cta')}</p>
+      <div class="flex flex-wrap items-center justify-between gap-3 rounded-2xl bg-gradient-to-r from-grape to-wine px-6 py-4 text-white shadow-md">
+        <p class="flex items-center gap-2 font-serif text-lg font-bold">
+          <GrapeMark class="h-7 w-7 text-white [&_circle]:fill-white" />
+          {t('home.vermar.cta')}
+        </p>
         <a
           href={localizedPath('/vermar', lang)}
-          class="rounded-full bg-white px-4 py-2 text-sm font-bold text-grape hover:bg-cream"
+          class="rounded-full bg-white px-4 py-2 text-sm font-bold text-grape shadow-sm transition-transform hover:scale-105 hover:bg-cream"
         >
           {t('home.vermar.ctaBtn')}
         </a>
@@ -59,7 +65,10 @@ const upcomingVermar = getVermarEvents().filter((e) => new Date(e.end) >= now);
       <>
         {thisWeek.length > 0 && (
           <section class="mb-10">
-            <h2 class="mb-4 font-serif text-2xl font-bold">{t('home.upcoming.week')}</h2>
+            <h2 class="mb-4 flex items-center gap-2 font-serif text-2xl font-bold">
+              <span class="h-2 w-2 rounded-full bg-grape" aria-hidden="true" />
+              {t('home.upcoming.week')}
+            </h2>
             <div class="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
               {thisWeek.map((event) => (
                 <EventCard event={event} lang={lang} />
@@ -69,7 +78,10 @@ const upcomingVermar = getVermarEvents().filter((e) => new Date(e.end) >= now);
         )}
         {thisMonthOnly.length > 0 && (
           <section>
-            <h2 class="mb-4 font-serif text-2xl font-bold">{t('home.upcoming.month')}</h2>
+            <h2 class="mb-4 flex items-center gap-2 font-serif text-2xl font-bold">
+              <span class="h-2 w-2 rounded-full bg-ochre" aria-hidden="true" />
+              {t('home.upcoming.month')}
+            </h2>
             <div class="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
               {thisMonthOnly.map((event) => (
                 <EventCard event={event} lang={lang} />
@@ -84,7 +96,7 @@ const upcomingVermar = getVermarEvents().filter((e) => new Date(e.end) >= now);
   <div class="mt-10 text-center">
     <a
       href={localizedPath('/agenda', lang)}
-      class="inline-block rounded-full bg-ochre px-6 py-3 font-bold text-white shadow-sm hover:bg-ochre/90"
+      class="inline-block rounded-full bg-ochre px-6 py-3 font-bold text-white shadow-sm transition-transform hover:-translate-y-0.5 hover:bg-ochre/90"
     >
       {t('home.viewAgenda')}
     </a>

@@ -1,6 +1,7 @@
 ---
 import { useTranslations, localizedPath, type Lang } from '../lib/i18n';
 import LanguageSwitcher from './LanguageSwitcher.astro';
+import GrapeMark from './GrapeMark.astro';
 
 interface Props {
   lang: Lang;
@@ -17,35 +18,47 @@ const links = [
   { href: '/llocs', label: t('nav.places') },
   { href: '/passats', label: t('nav.past') },
 ];
+
+const currentClean = path.replace(/^\/es(\/|$)/, '/') || '/';
 ---
 
-<header class="border-b border-stone/15 bg-cream/95 backdrop-blur">
+<header class="sticky top-0 z-40 border-b border-stone/15 bg-cream/95 backdrop-blur">
   <div class="mx-auto flex max-w-5xl flex-wrap items-center justify-between gap-3 px-4 py-3">
     <a href={localizedPath('/', lang)} class="flex items-center gap-2 font-serif text-xl font-bold text-grape">
-      <span aria-hidden="true">🍇</span>
+      <GrapeMark class="h-8 w-8 text-grape" />
       {t('site.title')}
     </a>
 
     <button
       type="button"
       id="nav-toggle"
-      class="rounded-md border border-stone/30 px-3 py-2 text-sm font-semibold sm:hidden"
+      class="flex items-center gap-1.5 rounded-full border border-stone/30 px-3 py-2 text-sm font-semibold sm:hidden"
       aria-expanded="false"
       aria-controls="main-nav"
     >
+      <svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true">
+        <path d="M2 4h14M2 9h14M2 14h14" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" />
+      </svg>
       Menú
     </button>
 
-    <nav id="main-nav" class="hidden w-full flex-wrap gap-x-5 gap-y-2 text-base font-semibold sm:flex sm:w-auto">
+    <nav id="main-nav" class="hidden w-full flex-wrap gap-x-1 gap-y-1 text-base font-semibold sm:flex sm:w-auto">
       {
-        links.map((link) => (
-          <a
-            href={localizedPath(link.href, lang)}
-            class="rounded px-1 py-0.5 text-ink hover:text-grape hover:underline"
-          >
-            {link.label}
-          </a>
-        ))
+        links.map((link) => {
+          const active = currentClean === link.href;
+          return (
+            <a
+              href={localizedPath(link.href, lang)}
+              aria-current={active ? 'page' : undefined}
+              class:list={[
+                'rounded-full px-3 py-1.5 transition-colors',
+                active ? 'bg-grape-light text-grape' : 'text-ink hover:bg-grape-light/60 hover:text-grape',
+              ]}
+            >
+              {link.label}
+            </a>
+          );
+        })
       }
     </nav>
 
